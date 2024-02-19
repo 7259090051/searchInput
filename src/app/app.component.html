@@ -1,0 +1,20 @@
+<div class="container p-5">
+  <input class="form-control" type="text" placeholder="Search" appDebounce
+  (debounce)="searchUser($event)"
+  [delay]="2000">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>login</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of usersData | paginate: { itemsPerPage: 10, currentPage: presentPage }">
+        <td>{{user.id}}</td>
+        <td>{{user.login}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="presentPage = $event"></pagination-controls>
+</div>
